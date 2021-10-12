@@ -1,4 +1,4 @@
-# React Course 3-rd homework /ᐠ-ᆽ-ᐟ \
+# React Course 3-rd homework /ᐠ-ᆽ-ᐟ \
 
 𓏲 𓏲 component's life cycle 𓏲 𓏲 /ᐠ=ᆽ=ᐟ \  𓏲 𓏲 image-finder
 
