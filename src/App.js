@@ -23,8 +23,7 @@ class App extends React.Component {
     )
       .then((r) => r.json())
       .then((imgs) => {
-        this.setState({ images: [...prevImg, ...imgs.hits] });
-        this.setState({ loading: false });
+        this.setState({ images: [...prevImg, ...imgs.hits], loading: false });
       })
       .catch(console.log);
   }
@@ -32,11 +31,13 @@ class App extends React.Component {
   //load-more-button only shows with img-gallery-component - relies on app's state - query, page-number and merges old images into new response
   onLoadMoreBtnClick = (e) => {
     e.preventDefault();
-    // window.scrollTo({
-    //   top: ImageGallery,
-    //   behavior: "smooth",
-    // });
+
     this.fetchImgs(this.state.query, this.state.pageNum, this.state.images);
+
+    window.scrollTo({
+      top: ImageGallery,
+      behavior: "smooth",
+    });
 
     this.setState((prevState) => ({
       pageNum: (prevState.pageNum += 1),
@@ -68,7 +69,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Searchbar onSubmit={this.onSubmit} />{" "}
+        <Searchbar onSubmit={this.onSubmit} />
+        {this.state.loading && <Loader />}
         {this.state.images && (
           <ImageGallery
             imagesArray={this.state.images}
@@ -76,7 +78,6 @@ class App extends React.Component {
             onBtnClick={this.onLoadMoreBtnClick}
           />
         )}
-        {this.state.loading && <Loader />}
         {this.state.showModal && (
           <Modal img={this.state.modalContent} toggleModal={this.toggleModal} />
         )}
