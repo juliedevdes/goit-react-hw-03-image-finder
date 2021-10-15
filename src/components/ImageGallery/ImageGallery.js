@@ -15,7 +15,9 @@ export default class ImageGallery extends React.Component {
             />
           ))}
         </ul>
-        <Button onBtnClick={this.props.onBtnClick} />
+        {this.props.imagesArray.length !== 0 && (
+          <Button onBtnClick={this.props.onBtnClick} />
+        )}
       </div>
     );
   }
