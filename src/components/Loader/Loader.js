@@ -1,16 +1,15 @@
 import React from "react";
-import s from "./Loader.module.css";
+import "./Loader.scss";
 
 export default class Loader extends React.Component {
   render() {
     return (
-      <div className={s.loader}>
+      <div className="Loader">
         <svg
           width="80"
           height="80"
           viewBox="0 0 44 44"
           xmlns="http://www.w3.org/2000/svg"
-          stroke="green"
           aria-label="audio-loading"
         >
           <g fill="none" fillRule="evenodd" strokeWidth="2">

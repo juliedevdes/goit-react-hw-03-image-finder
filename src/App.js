@@ -5,6 +5,8 @@ import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Loader from "./components/Loader/Loader";
 import Modal from "./components/Modal/Modal";
 
+import "./App.scss";
+
 class App extends React.Component {
   state = {
     loading: false,
@@ -25,7 +27,7 @@ class App extends React.Component {
       .then((imgs) => {
         this.setState({ images: [...prevImg, ...imgs.hits], loading: false });
       })
-      .catch(console.log);
+      .catch((err) => alert(`${err}`));
   }
 
   //load-more-button only shows with img-gallery-component - relies on app's state - query, page-number and merges old images into new response
@@ -85,4 +87,5 @@ class App extends React.Component {
     );
   }
 }
+
 export default App;

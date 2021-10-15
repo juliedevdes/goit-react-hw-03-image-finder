@@ -1,4 +1,5 @@
 import React from "react";
+import "./ImageGalleryItem.scss";
 
 export default class ImageGalleryItem extends React.Component {
   onClick = () => {

@@ -1,4 +1,5 @@
 import React from "react";
+import "./Searchbar.scss";
 
 export default class Searchbar extends React.Component {
   state = {

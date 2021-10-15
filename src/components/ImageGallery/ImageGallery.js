@@ -1,6 +1,7 @@
 import React from "react";
 import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem";
 import Button from "../Button/Button";
+import "./ImageGallery.scss";
 
 export default class ImageGallery extends React.Component {
   render() {
