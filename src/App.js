@@ -3,6 +3,7 @@ import React from "react";
 import Searchbar from "./components/Searchbar/Serachbar";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Loader from "./components/Loader/Loader";
+import Modal from "./components/Modal/Modal";
 
 class App extends React.Component {
   state = {
@@ -10,10 +11,15 @@ class App extends React.Component {
     pageNum: 1,
     loading: false,
     showModal: false,
+    modalContent: {},
   };
-  onImgClick = (e) => {
-    console.log("click on img");
-    console.log(e.target);
+  toggleModal = (e) => {
+    this.setState(({ showModal }) => ({ showModal: !showModal }));
+  };
+
+  onImgClick = (img) => {
+    this.setState({ modalContent: img });
+    this.toggleModal();
   };
 
   onSubmit = (query) => {
@@ -40,6 +46,10 @@ class App extends React.Component {
             imagesArray={this.state.images}
             onImgClick={this.onImgClick}
           />
+        )}
+
+        {this.state.showModal && (
+          <Modal img={this.state.modalContent} toggleModal={this.toggleModal} />
         )}
       </div>
     );
