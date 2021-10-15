@@ -6,7 +6,6 @@ export default class ImageGallery extends React.Component {
   render() {
     return (
       <div>
-        {" "}
         <ul className="ImageGallery">
           {this.props.imagesArray.map((img) => (
             <ImageGalleryItem
@@ -16,7 +15,7 @@ export default class ImageGallery extends React.Component {
             />
           ))}
         </ul>
-        <Button />
+        <Button onBtnClick={this.props.onBtnClick} />
       </div>
     );
   }
