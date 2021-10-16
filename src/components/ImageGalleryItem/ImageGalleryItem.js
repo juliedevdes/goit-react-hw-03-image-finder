@@ -1,7 +1,12 @@
 import React from "react";
 import "./ImageGalleryItem.scss";
+import PropTypes from "prop-types";
 
 export default class ImageGalleryItem extends React.Component {
+  static propTypes = {
+    img: PropTypes.shape({ id: PropTypes.number.isRequired }),
+  };
+
   onClick = () => {
     this.props.onClick(this.props.img);
   };

@@ -1,6 +1,6 @@
 import React from "react";
 
-import Searchbar from "./components/Searchbar/Serachbar";
+import Searchbar from "./components/Searchbar/Searachbar";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Loader from "./components/Loader/Loader";
 import Modal from "./components/Modal/Modal";

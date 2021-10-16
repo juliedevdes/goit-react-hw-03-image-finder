@@ -1,7 +1,13 @@
 import React from "react";
 import "./Modal.scss";
+import PropTypes from "prop-types";
 
 export default class Modal extends React.Component {
+  static propTypes = {
+    img: PropTypes.shape({ id: PropTypes.number.isRequired }),
+    toggleModal: PropTypes.func.isRequired,
+  };
+
   componentWillUnmount() {
     window.removeEventListener("keydown", this.handleKeyDown);
   }

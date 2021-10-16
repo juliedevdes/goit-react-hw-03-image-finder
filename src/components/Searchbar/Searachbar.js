@@ -1,7 +1,12 @@
 import React from "react";
 import "./Searchbar.scss";
+import PropTypes from "prop-types";
 
 export default class Searchbar extends React.Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   state = {
     inputVal: "",
   };
