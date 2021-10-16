@@ -26,6 +26,10 @@ class App extends React.Component {
       .then((r) => r.json())
       .then((imgs) => {
         this.setState({ images: [...prevImg, ...imgs.hits], loading: false });
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth",
+        });
       })
       .catch((err) => alert(`${err}`));
   }
@@ -35,11 +39,6 @@ class App extends React.Component {
     e.preventDefault();
 
     this.fetchImgs(this.state.query, this.state.pageNum, this.state.images);
-
-    window.scrollTo({
-      top: ImageGallery,
-      behavior: "smooth",
-    });
 
     this.setState((prevState) => ({
       pageNum: (prevState.pageNum += 1),
