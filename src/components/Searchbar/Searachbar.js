@@ -15,16 +15,9 @@ export default class Searchbar extends React.Component {
     this.setState({ inputVal: e.currentTarget.value });
   };
 
-  reset = () => {
-    this.setState({
-      inputVal: "",
-    });
-  };
-
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.onSubmit(this.state.inputVal);
-    this.reset();
   };
 
   render() {

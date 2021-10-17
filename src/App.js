@@ -17,7 +17,7 @@ class App extends React.Component {
     modalContent: {},
   };
 
-  // 🐶 main function to work with API, updates state's images depending on 3rd parametr
+  // 🐶 function to work with API, updates state's images depending on 3rd parametr (merges new with old or creates new 12)
   fetchImgs(query, pageNumber, prevImg = []) {
     this.setState({ loading: true });
     fetch(
@@ -26,15 +26,17 @@ class App extends React.Component {
       .then((r) => r.json())
       .then((imgs) => {
         this.setState({ images: [...prevImg, ...imgs.hits], loading: false });
-        window.scrollTo({
-          top: document.documentElement.scrollHeight,
-          behavior: "smooth",
-        });
+        if (prevImg.length !== 0) {
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: "smooth",
+          });
+        }
       })
       .catch((err) => alert(`${err}`));
   }
 
-  //load-more-button only shows with img-gallery-component - relies on app's state - query, page-number and merges old images into new response
+  //load-more-button only shows with img-gallery-component, it relies on App's state - query, page-number and merges old images into new response
   onLoadMoreBtnClick = (e) => {
     e.preventDefault();
 
@@ -45,10 +47,12 @@ class App extends React.Component {
     }));
   };
 
-  //loads new query, always 1st page and updates app's state for pagination, but don't relies on that
+  //loads new query, always 1st page and updates App's state for pagination, but never uses that
   onSubmit = (query) => {
     this.setState({ query, pageNum: 1 });
+
     this.fetchImgs(query, 1);
+
     this.setState((prevState) => ({
       pageNum: (prevState.pageNum += 1),
     }));
